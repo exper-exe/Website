@@ -3,210 +3,155 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Silent Canopy: Analyzing the Global Impact of Deforestation</title>
+    <title>Deforestation Analysis - Portfolio Sample</title>
     <style>
         :root {
-            --bg-color: #f8f9fa;
-            --text-color: #212529;
-            --accent-color: #2b9348; /* Forest Green */
-            --accent-dark: #155d27;
-            --card-bg: #ffffff;
-            --border-color: #e9ecef;
-            --muted-text: #6c757d;
+            --bg-color: #fcfdfc;
+            --text-color: #2b2d42;
+            --accent-color: #2b9348;
+            --accent-dark: #1b5e20;
+            --border-color: #e2e8f0;
         }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
             background-color: var(--bg-color);
             color: var(--text-color);
             margin: 0;
             padding: 0;
-            line-height: 1.8;
-            -webkit-font-smoothing: antialiased;
+            width: 1280px;
+            height: 1024px;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            overflow: hidden; /* Stops any scrolling bars */
         }
 
-        /* Top Navigation Bar Simulation */
-        nav {
-            background-color: var(--card-bg);
-            border-bottom: 1px solid var(--border-color);
-            padding: 1rem 2rem;
+        .wrapper {
+            padding: 2.5rem 3.5rem;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            justify-content: space-between;
+            box-sizing: border-box;
+        }
+
+        header {
+            border-bottom: 2px solid var(--border-color);
+            padding-bottom: 1rem;
+            margin-bottom: 1rem;
             display: flex;
             justify-content: space-between;
-            align-items: center;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
-
-        .logo {
-            font-weight: 800;
-            font-size: 1.3rem;
-            color: var(--accent-dark);
-            text-decoration: none;
-            letter-spacing: -0.5px;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 1.5rem;
-            color: var(--muted-text);
-            font-size: 0.9rem;
-            font-weight: 500;
-        }
-
-        /* Main Layout */
-        .container {
-            max-width: 740px; /* Perfect reading width for articles */
-            margin: 0 auto;
-            padding: 3rem 1.5rem;
-        }
-
-        /* Article Header */
-        header {
-            margin-bottom: 2.5rem;
-        }
-
-        .category {
-            color: var(--accent-color);
-            text-transform: uppercase;
-            font-size: 0.8rem;
-            font-weight: 700;
-            letter-spacing: 1px;
-            display: inline-block;
-            margin-bottom: 0.5rem;
+            align-items: flex-end;
         }
 
         h1 {
-            font-size: 2.6rem;
-            line-height: 1.25;
+            font-size: 2rem;
             font-weight: 800;
-            letter-spacing: -1px;
-            margin: 0 0 1rem 0;
+            letter-spacing: -0.5px;
+            margin: 0;
             color: #111;
         }
 
-        .meta-info {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
+        .meta {
             font-size: 0.9rem;
-            color: var(--muted-text);
-            border-bottom: 1px solid var(--border-color);
-            padding-bottom: 1.5rem;
-        }
-
-        .author-img {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            background-color: var(--accent-color);
-            color: white;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: bold;
-        }
-
-        .author-name {
-            color: var(--text-color);
-            font-weight: 600;
-        }
-
-        /* Article Body styling */
-        article p {
-            font-size: 1.15rem;
-            margin-bottom: 1.75rem;
-            color: #292929;
-        }
-
-        article p::first-letter {
-            font-size: 1.15rem;
-        }
-
-        /* Highlight feature block quote */
-        .highlight-quote {
-            border-left: 4px solid var(--accent-color);
-            padding-left: 1.5rem;
-            margin: 2rem 0;
-            font-style: italic;
-            font-size: 1.25rem;
-            color: var(--accent-dark);
+            color: #64748b;
+            text-align: right;
             font-weight: 500;
         }
 
-        /* Footer / Author Badge Box */
-        .author-bio-card {
-            background-color: var(--card-bg);
-            border: 1px solid var(--border-color);
-            border-radius: 8px;
-            padding: 1.5rem;
-            margin-top: 4rem;
+        .meta span {
+            color: var(--accent-dark);
+            font-weight: 700;
+        }
+
+        /* Two-column layout to utilize the square resolution perfectly */
+        .content-columns {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2.5rem;
+            flex-grow: 1;
+        }
+
+        p {
+            font-size: 1.02rem;
+            line-height: 1.6;
+            margin-top: 0;
+            margin-bottom: 1.1rem;
+            text-align: justify;
+        }
+
+        .highlight-box {
+            background-color: #f1f9f3;
+            border-left: 4px solid var(--accent-color);
+            padding: 1rem;
+            margin: 1rem 0;
+            font-style: italic;
+            font-weight: 500;
+            color: var(--accent-dark);
+            font-size: 0.95rem;
+        }
+
+        footer {
+            border-top: 1px solid var(--border-color);
+            padding-top: 0.8rem;
             display: flex;
-            gap: 1.5rem;
+            justify-content: space-between;
             align-items: center;
+            font-size: 0.85rem;
+            color: #94a3b8;
         }
 
-        .bio-text h3 {
-            margin: 0 0 0.25rem 0;
-            font-size: 1.1rem;
-        }
-
-        .bio-text p {
-            margin: 0;
-            font-size: 0.9rem;
-            color: var(--muted-text);
-            line-height: 1.5;
+        .badge {
+            background: var(--accent-color);
+            color: white;
+            padding: 0.2rem 0.6rem;
+            border-radius: 4px;
+            font-weight: 600;
+            font-size: 0.75rem;
+            text-transform: uppercase;
         }
     </style>
 </head>
 <body>
 
-    <nav>
-        <a href="#" class="logo">EcoPulse.</a>
-        <div class="nav-links">
-            <span>Articles</span>
-            <span>Research</span>
-            <span>About</span>
-        </div>
-    </nav>
-
-    <div class="container">
+    <div class="wrapper">
         <header>
-            <span class="category">Environmental Science</span>
-            <h1>The Silent Canopy: Analyzing the Global Impact of Deforestation</h1>
-            
-            <div class="meta-info">
-                <div class="author-img">A</div>
-                <div>
-                    By <span class="author-name">Anees Khan</span><br>
-                    <span>May 23, 2026 · 4 min read</span>
-                </div>
+            <div>
+                <span class="badge">Environmental Essay</span>
+                <h1>The Silent Canopy: Analyzing the Global Impact of Deforestation</h1>
+            </div>
+            <div class="meta">
+                Written by: <span>Anees Khan</span><br>
+                Portfolio Research Sample
             </div>
         </header>
 
-        <article>
-            <p>Forests are the lungs of our planet, serving as critical pillars of biodiversity, climate regulation, and human survival. Covering roughly 31% of the world’s land area, these vast ecosystems provide habitats for millions of species and regulate the delicate balance of gases in our atmosphere. However, this essential green canopy is rapidly disappearing. Deforestation—the permanent removal of trees to clear land for agriculture, logging, and urban expansion—has accelerated at an alarming rate. It stands today as one of the most pressing environmental crises of the modern era, carrying devastating consequences for global climates and ecosystems.</p>
+        <div class="content-columns">
+            <div class="left-col">
+                <p>Forests are the lungs of our planet, serving as critical pillars of biodiversity, climate regulation, and human survival. Covering roughly 31% of the world’s land area, these vast ecosystems provide habitats for millions of species and regulate the delicate balance of gases in our atmosphere. However, this essential green canopy is rapidly disappearing. Deforestation—the permanent removal of trees to clear land for agriculture, logging, and urban expansion—has accelerated at an alarming rate. It stands today as one of the most pressing environmental crises of the modern era, carrying devastating consequences for global climates and ecosystems.</p>
 
-            <p>The primary driver of global deforestation is commercial human activity. Large-scale industrial agriculture, particularly cattle ranching and the cultivation of vast monocultures like palm oil and soy, accounts for the vast majority of forest loss. Driven by shifting consumer demands, massive tracts of pristine rainforest, such as the Amazon, are routinely burned or bulldozed. Additionally, both legal and illegal logging operations systematically deplete forests to satisfy the global demand for timber and paper products, while urban sprawl continuously encroaches on natural woodland boundaries.</p>
-
-            <div class="highlight-quote">
-                "Removing trees disrupts the local water cycle; without robust root systems to anchor the soil, deforested regions experience extreme erosion and vulnerability to flash floods."
+                <p>The primary driver of global deforestation is commercial human activity. Large-scale industrial agriculture, particularly cattle ranching and the cultivation of vast monocultures like palm oil and soy, accounts for the vast majority of forest loss. Driven by shifting consumer demands, massive tracts of pristine rainforest, such as the Amazon, are routinely burned or bulldozed. Additionally, both legal and illegal logging operations systematically deplete forests to satisfy global industrial demands.</p>
+                
+                <div class="highlight-box">
+                    "Deforestation contributes to roughly 10% of global warming emissions. The loss of these natural carbon sponges creates a dangerous feedback loop..."
+                </div>
             </div>
 
-            <p>The immediate ecological cost of this destruction is a catastrophic loss of biodiversity. Forests are home to over 80% of the world’s terrestrial species of animals, plants, and insects. When a forest is fragmented or completely cleared, countless organisms lose their natural habitats, pushing vulnerable species toward irreversible extinction. Furthermore, removing trees disrupts the local water cycle; without a dense canopy to intercept rainfall and robust root systems to anchor the soil, deforested regions experience severe soil erosion, nutrient depletion, and an increased vulnerability to destructive flash floods.</p>
+            <div class="right-col">
+                <p>The immediate ecological cost of this destruction is a catastrophic loss of biodiversity. Forests are home to over 80% of the world’s terrestrial species of animals, plants, and insects. When a forest is fragmented or completely cleared, countless organisms lose their natural habitats, pushing vulnerable species toward irreversible extinction. Furthermore, removing trees disrupts the local water cycle; without a dense canopy to intercept rainfall and robust root systems to anchor the soil, deforested regions experience severe soil erosion, nutrient depletion, and an increased vulnerability to destructive flash floods.</p>
 
-            <p>Beyond local ecological disruption, deforestation is a primary catalyst for global climate change. Trees act as massive natural carbon sinks, absorbing billions of metric tons of carbon dioxide ($CO_2$) from the atmosphere through photosynthesis. When forests are cut down or burned, that stored carbon is instantly released back into the atmosphere as greenhouse gases. In fact, deforestation contributes to roughly 10% of global warming emissions. The loss of these natural carbon sponges creates a dangerous feedback loop, accelerating global temperature rises, shifting unpredictable weather patterns, and worsening severe weather events across the globe.</p>
+                <p>Beyond local ecological disruption, deforestation is a primary catalyst for global climate change. Trees act as massive natural carbon sinks, absorbing billions of metric tons of carbon dioxide ($CO_2$) from the atmosphere through photosynthesis. When forests are cut down or burned, that stored carbon is instantly released back into the atmosphere as greenhouse gases. The loss of these natural carbon sponges accelerates global temperature rises, shifts unpredictable weather patterns, and worsens severe weather events across the globe.</p>
 
-            <p>In conclusion, deforestation is not merely a localized environmental concern; it is a global crisis that threatens the foundational stability of our planet's biosphere. The rapid expansion of agricultural and industrial frontiers has extracted a heavy toll on our atmosphere, biodiversity, and soil integrity. Addressing this crisis requires a unified shift toward sustainable land management, strict enforcement against illegal logging, and aggressive global reforestation initiatives. Preserving our remaining forests is not just an act of environmental conservation; it is an absolute necessity for securing a stable, habitable world for future generations.</p>
-        </article>
-
-        <div class="author-bio-card">
-            <div class="author-img" style="width: 50px; height: 50px; font-size: 1.2rem;">A</div>
-            <div class="bio-text">
-                <h3>Written by Anees Khan</h3>
-                <p>Professional content writer and researcher specializing in structural essays, analytical deep-dives, and comprehensive expository prose.</p>
+                <p>In conclusion, deforestation is a global crisis that threatens the foundational stability of our planet's biosphere. Addressing this crisis requires a unified shift toward sustainable land management, strict enforcement against illegal logging, and aggressive global reforestation initiatives. Preserving our remaining forests is an absolute necessity for securing a stable, habitable world for future generations.</p>
             </div>
         </div>
+
+        <footer>
+            <span>© 2026 Anees Khan. All Rights Reserved.</span>
+            <span>Document Layout: Premium Blog Format</span>
+        </footer>
     </div>
 
 </body>
