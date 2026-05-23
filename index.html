@@ -3,155 +3,356 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Population Growth Analysis - Portfolio Sample</title>
+    <title>Al-Hilal Annual Magazine | AI in Healthcare Project</title>
     <style>
-        :root {
-            --bg-color: #fcfdfc;
-            --text-color: #2b2d42;
-            --accent-color: #3a86c8; /* Deep Blue for Global/Societal theme */
-            --accent-dark: #1d4ed8;
-            --border-color: #e2e8f0;
+        /* CSS Reset & Core Styling */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            margin: 0;
-            padding: 0;
-            width: 1280px;
-            height: 1024px;
-            box-sizing: border-box;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            overflow: hidden; /* Stops any scrolling bars */
-        }
-
-        .wrapper {
-            padding: 2.5rem 3.5rem;
-            display: flex;
-            flex-direction: column;
-            height: 100%;
-            justify-content: space-between;
-            box-sizing: border-box;
-        }
-
-        header {
-            border-bottom: 2px solid var(--border-color);
-            padding-bottom: 1rem;
-            margin-bottom: 1rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-end;
-        }
-
-        h1 {
-            font-size: 2rem;
-            font-weight: 800;
-            letter-spacing: -0.5px;
-            margin: 0;
-            color: #111;
-        }
-
-        .meta {
-            font-size: 0.9rem;
-            color: #64748b;
-            text-align: right;
-            font-weight: 500;
-        }
-
-        .meta span {
-            color: var(--accent-dark);
-            font-weight: 700;
-        }
-
-        .content-columns {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 2.5rem;
-            flex-grow: 1;
-        }
-
-        p {
-            font-size: 1.02rem;
+            font-family: 'Georgia', 'Times New Roman', serif;
+            background-color: #f7f5f0; /* Traditional off-white/cream paper texture color */
+            color: #2c2c2c;
             line-height: 1.6;
-            margin-top: 0;
-            margin-bottom: 1.1rem;
+            padding: 20px;
+        }
+
+        /* Magazine Header */
+        .magazine-header {
+            text-align: center;
+            border-bottom: 4px double #0d47a1; /* Deep institutional blue/green */
+            padding-bottom: 15px;
+            margin-bottom: 30px;
+            max-width: 1100px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .magazine-title {
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: #064e3b; /* Deep Emerald Crest Color */
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            font-family: 'Times New Roman', serif;
+        }
+
+        .magazine-meta {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #6b7280;
+            margin-top: 5px;
+            display: flex;
+            justify-content: space-between;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            border-top: 1px solid #d1d5db;
+            padding-top: 5px;
+        }
+
+        /* Main Container Layout */
+        .main-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 3fr 1fr;
+            gap: 40px;
+        }
+
+        /* Article Structure */
+        .article-container {
+            background: #ffffff;
+            padding: 40px;
+            border-radius: 4px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+            border-top: 3px solid #d97706; /* Elegant Amber/Gold Accent Bar */
+        }
+
+        .project-tag {
+            display: inline-block;
+            background-color: #fef3c7;
+            color: #b45309;
+            font-size: 0.75rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            padding: 4px 10px;
+            border-radius: 2px;
+            margin-bottom: 15px;
+            letter-spacing: 0.5px;
+        }
+
+        h1.article-title {
+            font-size: 2.4rem;
+            line-height: 1.2;
+            color: #111827;
+            margin-bottom: 10px;
+            font-weight: 800;
+        }
+
+        .author-byline {
+            font-style: italic;
+            color: #4b5563;
+            margin-bottom: 25px;
+            font-size: 1.1rem;
+            border-bottom: 1px dashed #e5e7eb;
+            padding-bottom: 15px;
+        }
+
+        /* Editorial Multi-column setup for the article body */
+        .article-body {
+            font-size: 1.1rem;
             text-align: justify;
         }
 
-        .highlight-box {
-            background-color: #f1f5f9;
-            border-left: 4px solid var(--accent-color);
-            padding: 1rem;
-            margin: 1rem 0;
-            font-style: italic;
+        .lead-paragraph {
+            font-size: 1.25rem;
+            line-height: 1.7;
+            color: #1f2937;
+            margin-bottom: 20px;
             font-weight: 500;
-            color: var(--accent-dark);
-            font-size: 0.95rem;
         }
 
-        footer {
-            border-top: 1px solid var(--border-color);
-            padding-top: 0.8rem;
+        .lead-paragraph::first-letter {
+            float: left;
+            font-size: 4.2rem;
+            line-height: 0.8;
+            padding-top: 4px;
+            padding-right: 8px;
+            padding-left: 3px;
+            font-family: 'Times New Roman', serif;
+            color: #064e3b;
+            font-weight: bold;
+        }
+
+        .article-text {
+            column-count: 2;
+            column-gap: 30px;
+            column-rule: 1px solid #f3f4f6;
+        }
+
+        .article-text p {
+            margin-bottom: 18px;
+            text-indent: 20px;
+        }
+
+        .article-text p:first-of-type {
+            text-indent: 0; /* Don't indent the absolute first paragraph under headings */
+        }
+
+        .article-text h3 {
+            column-span: all;
+            font-size: 1.5rem;
+            color: #064e3b;
+            margin: 25px 0 15px 0;
+            border-left: 4px solid #d97706;
+            padding-left: 10px;
+            font-family: sans-serif;
+            letter-spacing: -0.5px;
+        }
+
+        /* Blockquote Callout box */
+        blockquote {
+            column-span: all;
+            background-color: #f9fafb;
+            border-left: 4px solid #064e3b;
+            padding: 20px;
+            margin: 25px 0;
+            font-style: italic;
+            font-size: 1.2rem;
+            color: #374151;
+            position: relative;
+        }
+
+        /* Sidebar Styling (Representing the surrounding Annual Book) */
+        .magazine-sidebar {
             display: flex;
-            justify-content: space-between;
-            align-items: center;
-            font-size: 0.85rem;
-            color: #94a3b8;
+            flex-direction: column;
+            gap: 25px;
         }
 
-        .badge {
-            background: var(--accent-color);
-            color: white;
-            padding: 0.2rem 0.6rem;
+        .sidebar-widget {
+            background: #ffffff;
+            padding: 20px;
             border-radius: 4px;
-            font-weight: 600;
-            font-size: 0.75rem;
+            border: 1px solid #e5e7eb;
+        }
+
+        .widget-title {
+            font-size: 0.9rem;
             text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #064e3b;
+            border-bottom: 2px solid #064e3b;
+            padding-bottom: 5px;
+            margin-bottom: 15px;
+            font-weight: bold;
+        }
+
+        .sidebar-widget ul {
+            list-style: none;
+        }
+
+        .sidebar-widget ul li {
+            margin-bottom: 10px;
+            font-size: 0.9rem;
+            border-bottom: 1px solid #f3f4f6;
+            padding-bottom: 8px;
+        }
+
+        .sidebar-widget ul li a {
+            color: #4b5563;
+            text-decoration: none;
+        }
+
+        .sidebar-widget ul li a:hover {
+            color: #d97706;
+            text-decoration: underline;
+        }
+
+        .metadata-list table {
+            width: 100%;
+            font-size: 0.85rem;
+            color: #4b5563;
+        }
+
+        .metadata-list td {
+            padding: 6px 0;
+        }
+
+        .metadata-list td:first-child {
+            font-weight: bold;
+            color: #111827;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 850px) {
+            .main-container {
+                grid-template-columns: 1fr;
+            }
+            .article-text {
+                column-count: 1;
+            }
+            .magazine-title {
+                font-size: 2.5rem;
+            }
         }
     </style>
 </head>
 <body>
 
-    <div class="wrapper">
-        <header>
-            <div>
-                <span class="badge">Sociological Essay</span>
-                <h1>Strained Horizons: Analyzing the Global Effects of Population Growth</h1>
-            </div>
-            <div class="meta">
-                Written by: <span>Anees Khan</span><br>
-                Portfolio Research Sample
-            </div>
-        </header>
+    <!-- Al-Hilal School Magazine Header Banner -->
+    <header class="magazine-header">
+        <div class="magazine-title">Al-Hilal</div>
+        <div class="magazine-meta">
+            <span>The Official Annual Publication</span>
+            <span>Volume XXVI — 2026</span>
+            <span>Student Submission Section</span>
+        </div>
+    </header>
 
-        <div class="content-columns">
-            <div class="left-col">
-                <p>The trajectory of human population growth over the last century has been nothing short of unprecedented. Driven by advancements in modern medicine, agricultural breakthroughs, and improved public sanitation, the global population has expanded exponentially. While this growth reflects significant triumphs in human development and longevity, it simultaneously poses profound challenges for the modern world. As urban centers swell and global demand reaches critical thresholds, the cascading effects of demographic expansion increasingly strain our planet's natural ecosystems, social infrastructures, and economic stability.</p>
+    <!-- Layout Container -->
+    <main class="main-container">
 
-                <p>The most immediate and severe impact of rapid population growth is the acute pressure it places on finite natural resources. Every single individual added to the planet increases the cumulative demand for fresh water, arable land, energy, and food. To satisfy the consumption requirements of billions, agricultural frontiers must expand, leading to catastrophic over-farming, depletion of vital topsoil, and severe water scarcity in vulnerable regions.</p>
-                
-                <div class="highlight-box">
-                    "Rapid demographic expansion acts as a massive risk multiplier, worsening existing environmental vulnerabilities and accelerating resource depletion globally."
+        <!-- The Main Article Content Area -->
+        <article class="article-container">
+            <span class="project-tag">Science &amp; Technology Project</span>
+            <h1 class="article-title">The Digital Pulse: How Artificial Intelligence is Reshaping the Modern Hospital</h1>
+            <div class="author-byline">Written by Anees Khan — Department of Computer Studies</div>
+
+            <div class="article-body">
+                <p class="lead-paragraph">
+                    Hospitals have long stood as monuments to human endurance, relying entirely on the sharp instincts and manual dedication of doctors and nurses. However, a quiet revolution is currently unfolding within the white corridors of modern medical institutions. Artificial Intelligence is moving out of the textbook and into the emergency room.
+                </p>
+
+                <div class="article-text">
+                    <p>
+                        The introduction of sophisticated AI modeling is radically shifting how medical personnel triage patients, process historical files, and predict complications. What used to take clinical observation teams hours of continuous check-ins can now be monitored dynamically in microseconds, entirely transforming hospital frameworks.
+                    </p>
+
+                    <h3>Predictive Diagnostics and Early Intervention</h3>
+                    <p>
+                        The primary contribution of AI to modern clinical floors lies in its pattern recognition capabilities. Large Language Models and algorithmic networks process hundreds of biomarkers from incoming trauma data streams instantaneously. This allows machines to cross-examine current patient vitals against historical medical databases spanning decades.
+                    </p>
+                    <p>
+                        For instance, sepsis is an aggressive killer in hospital wards that can be incredibly difficult to track early on. Modern AI tracking engines scan subtle, cascading shifts across blood charts, baseline temperatures, and heart rates to alert nursing stations hours before human observation can catch the critical spiral.
+                    </p>
+
+                    <blockquote>
+                        "The goal is not to substitute the human warmth or clinical judgment of a doctor, but to hand them a digital lens capable of seeing microscopic anomalies across thousands of records simultaneously."
+                    </blockquote>
+
+                    <h3>Streamlining the Burden of Documentation</h3>
+                    <p>
+                        Beyond the high-intensity theater of surgical suites, artificial intelligence is tackling a quieter crisis: administrative burnout. Medical professionals report spending up to a third of their active shifts manually logging notes, filling out forms, and filing compliance paperwork.
+                    </p>
+                    <p>
+                        Automated ambient voice tools now listen safely and securely during consultation sessions, turning spoken physician dialogue into structured, beautifully formatted charts automatically. This minimizes human interface errors and guarantees that accurate patient data moves flawlessly between different hospital departments.
+                    </p>
+
+                    <h3>Surgical Precision and Robotic Assistance</h3>
+                    <p>
+                        In the operating room, intelligent computer vision algorithms provide surgeons with enhanced real-time spatial awareness. During delicate minimally invasive procedures, AI tracking programs overlay digital pathways onto video feeds, highlighting structural boundaries and major vessels to prevent accidental nicks. 
+                    </p>
+                    <p>
+                        As deep learning models continue to adapt alongside expert surgical practices, the hospital of tomorrow promises to be safer, remarkably more efficient, and hyper-focused on individualized recovery pathways. The fusion of machine precision and human empathy is resetting the standard of public health.
+                    </p>
+                </div>
+            </div>
+        </article>
+
+        <!-- Sidebar Panel: Representing context of the Al-Hilal Book structure -->
+        <aside class="magazine-sidebar">
+            
+            <div class="sidebar-widget">
+                <div class="widget-title">Project Details</div>
+                <div class="metadata-list">
+                    <table>
+                        <tr>
+                            <td>Student:</td>
+                            <td>Anees Khan</td>
+                        </tr>
+                        <tr>
+                            <td>Subject:</td>
+                            <td>English &amp; Tech Blog</td>
+                        </tr>
+                        <tr>
+                            <td>Submission:</td>
+                            <td>Annual Anthology</td>
+                        </tr>
+                        <tr>
+                            <td>Grade:</td>
+                            <td>O-Level Division</td>
+                        </tr>
+                    </table>
                 </div>
             </div>
 
-            <div class="right-col">
-                <p>Beyond resource depletion, rapid demographic growth severely strains public infrastructure, particularly within developing nations. When population expansion outpaces municipal planning, major cities experience uncontrolled urban sprawl and the proliferation of overcrowded, underfunded settlements. Public education systems, healthcare facilities, and transportation networks become deeply overwhelmed. Governments frequently struggle to allocate the immense capital required to expand these essential public services, resulting in widening socio-economic disparities and reduced standards of living.</p>
-
-                <p>Furthermore, population growth acts as a powerful catalyst for severe environmental degradation. Industrializing economies, rushing to create employment opportunities and support expanding populations, heavily rely on cheap fossil fuels. This surge in industrial activity drastically accelerates global greenhouse gas emissions, worsening systemic climate change. Additionally, massive urban expansion generates unprecedented volumes of plastic, electronic, and industrial waste, heavily polluting marine and terrestrial environments.</p>
-
-                <p>In conclusion, rapid population growth is a complex global phenomenon that demands balanced, highly strategic policy solutions. While human ingenuity continues to pioneer technological innovations to boost efficiency, the physical limits of our planet cannot be ignored. Mitigating these systemic strains requires global investment in sustainable infrastructure, equitable resource distribution, and comprehensive education programs. Balancing population trends with ecological boundaries remains vital for securing a sustainable global future.</p>
+            <div class="sidebar-widget">
+                <div class="widget-title">Al-Hilal Vol. 26 Contents</div>
+                <ul>
+                    <li><a href="#">Principal's Annual Address</a></li>
+                    <li><a href="#">Poetry: Echoes of the School Yard</a></li>
+                    <li><a href="#">Sports Day 2026: A Photo Essay</a></li>
+                    <li><a href="#" style="font-weight: bold; color: #064e3b;">→ AI in the Hospital Industry</a></li>
+                    <li><a href="#">History of Our Crest &amp; Traditions</a></li>
+                </ul>
             </div>
-        </div>
 
-        <footer>
-            <span>© 2026 Anees Khan. All Rights Reserved.</span>
-            <span>Document Layout: Premium Blog Format</span>
-        </footer>
-    </div>
+            <div class="sidebar-widget" style="background-color: #fef3c7; border: 1px solid #f59e0b;">
+                <div class="widget-title" style="color: #b45309; border-bottom: 2px solid #b45309;">Editorial Board Note</div>
+                <p style="font-size: 0.85rem; color: #78350f; line-height: 1.4;">
+                    This article was selected for the 2026 Al-Hilal Academic Showcase category for its depth of research regarding emerging technology trends.
+                </p>
+            </div>
+
+        </aside>
+
+    </main>
 
 </body>
 </html>
