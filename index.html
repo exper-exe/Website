@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Penetration Tester Portfolio</title>
+    <style>
+        :root {
+            --bg-color: #0d1117;
+            --card-bg: #161b22;
+            --accent-color: #00ff66; /* Clean hacker green */
+            --text-main: #c9d1d9;
+            --text-muted: #8b949e;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+
+        header {
+            text-align: center;
+            padding: 4rem 2rem;
+            background: linear-gradient(180deg, #111c14 0%, var(--bg-color) 100%);
+            border-bottom: 1px solid #21262d;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        h1 {
+            color: #fff;
+            margin-bottom: 0.5rem;
+            font-size: 2.5rem;
+        }
+
+        .accent {
+            color: var(--accent-color);
+            font-family: monospace;
+        }
+
+        .subtitle {
+            color: var(--text-muted);
+            font-size: 1.2rem;
+            margin-top: 0;
+        }
+
+        .section-title {
+            color: #fff;
+            border-bottom: 2px solid var(--card-bg);
+            padding-bottom: 0.5rem;
+            margin-top: 3rem;
+        }
+
+        .card {
+            background-color: var(--card-bg);
+            border: 1px solid #30363d;
+            border-radius: 6px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .skill-badge {
+            background: #21262d;
+            border: 1px solid #30363d;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            text-align: center;
+            font-family: monospace;
+            font-size: 0.9rem;
+        }
+
+        .contact-item {
+            background: #1f242c;
+            border: 1px solid #30363d;
+            padding: 1rem;
+            border-radius: 6px;
+            text-align: left;
+        }
+
+        .contact-label {
+            font-family: monospace;
+            color: var(--accent-color);
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            margin-bottom: 0.25rem;
+            display: block;
+        }
+
+        .contact-value a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.2s ease;
+        }
+
+        .contact-value a:hover {
+            color: var(--accent-color);
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: transparent;
+            color: var(--accent-color);
+            border: 1px solid var(--accent-color);
+            padding: 0.75rem 1.5rem;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: bold;
+            font-family: monospace;
+            transition: all 0.3s ease;
+            margin-top: 1rem;
+        }
+
+        .btn:hover {
+            background-color: var(--accent-color);
+            color: var(--bg-color);
+            box-shadow: 0 0 15px rgba(0, 255, 102, 0.4);
+            cursor: pointer;
+        }
+
+        footer {
+            text-align: center;
+            padding: 3rem;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1><span class="accent">$</span> Anees | Penetration Tester</h1>
+        <p class="subtitle">Securing networks, finding flaws, protecting data.</p>
+        <a href="#contact" class="btn">Initialize_Contact()</a>
+    </header>
+
+    <div class="container">
+        <section id="about">
+            <h2 class="section-title">About Me</h2>
+            <div class="card">
+                <p>Hi! I’m a 16-year-old penetration tester specializing in identifying and patching system vulnerabilities. Age doesn't limit capability—I’ve dedicated years to mastering network security, web application pen-testing, and data defense.</p>
+                <p>I help businesses and individuals find security gaps before malicious actors do. Every assessment I run comes with a detailed, clear, and actionable report outlining exactly how to secure your assets.</p>
+            </div>
+        </section>
+
+        <section id="skills">
+            <h2 class="section-title">Core Skills</h2>
+            <div class="grid">
+                <div class="skill-badge">Web App Pen-Testing</div>
+                <div class="skill-badge">Network Security</div>
+                <div class="skill-badge">Vulnerability Analysis</div>
+                <div class="skill-badge">OWASP Top 10</div>
+                <div class="skill-badge">Linux / Bash</div>
+                <div class="skill-badge">Report Writing</div>
+            </div>
+        </section>
+
+        <section id="services">
+            <h2 class="section-title">Services Provided</h2>
+            <div class="card">
+                <h3>🔍 Web Application Audit</h3>
+                <p>Deep-dive analysis of your web pages to check for common flaws like SQL Injection, XSS, and broken authentication configurations.</p>
+            </div>
+            <div class="card">
+                <h3>🛡️ Vulnerability Assessments</h3>
+                <p>Scanning and checking target infrastructures to find outdated software, weak configurations, and easily exploitable access points.</p>
+            </div>
+        </section>
+
+        <section id="contact">
+            <h2 class="section-title">Secure a Consultation</h2>
+            <div class="card">
+                <p style="text-align: center; margin-bottom: 1.5rem;">Need your systems stress-tested? Reach out via any of the secure channels below to collaborate.</p>
+                
+                <div class="contact-grid">
+                    <div class="contact-item">
+                        <span class="contact-label">// email_address</span>
+                        <div class="contact-value"><a href="mailto:itsthatoldanees@gmail.com">itsthatoldanees@gmail.com</a></div>
+                    </div>
+                    <div class="contact-item">
+                        <span class="contact-label">// instagram</span>
+                        <div class="contact-value"><a href="https://instagram.com/aneesync" target="_blank">@aneesync</a></div>
+                    </div>
+                    <div class="contact-item">
+                        <span class="contact-label">// fiverr_gigs</span>
+                        <div class="contact-value"><a href="https://www.fiverr.com/your_username" target="_blank">Order Pen-Test</a></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <p>© 2026 Anees. All assessments performed under strict ethical agreements.</p>
+    </footer>
+
+</body>
+</html>
