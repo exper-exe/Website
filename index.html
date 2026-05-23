@@ -3,217 +3,211 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Penetration Tester Portfolio</title>
+    <title>The Silent Canopy: Analyzing the Global Impact of Deforestation</title>
     <style>
         :root {
-            --bg-color: #0d1117;
-            --card-bg: #161b22;
-            --accent-color: #00ff66; /* Clean hacker green */
-            --text-main: #c9d1d9;
-            --text-muted: #8b949e;
+            --bg-color: #f8f9fa;
+            --text-color: #212529;
+            --accent-color: #2b9348; /* Forest Green */
+            --accent-dark: #155d27;
+            --card-bg: #ffffff;
+            --border-color: #e9ecef;
+            --muted-text: #6c757d;
         }
 
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
             background-color: var(--bg-color);
-            color: var(--text-main);
+            color: var(--text-color);
             margin: 0;
             padding: 0;
-            line-height: 1.6;
+            line-height: 1.8;
+            -webkit-font-smoothing: antialiased;
         }
 
-        header {
-            text-align: center;
-            padding: 4rem 2rem;
-            background: linear-gradient(180deg, #111c14 0%, var(--bg-color) 100%);
-            border-bottom: 1px solid #21262d;
+        /* Top Navigation Bar Simulation */
+        nav {
+            background-color: var(--card-bg);
+            border-bottom: 1px solid var(--border-color);
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
         }
 
+        .logo {
+            font-weight: 800;
+            font-size: 1.3rem;
+            color: var(--accent-dark);
+            text-decoration: none;
+            letter-spacing: -0.5px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 1.5rem;
+            color: var(--muted-text);
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        /* Main Layout */
         .container {
-            max-width: 800px;
+            max-width: 740px; /* Perfect reading width for articles */
             margin: 0 auto;
-            padding: 2rem;
+            padding: 3rem 1.5rem;
+        }
+
+        /* Article Header */
+        header {
+            margin-bottom: 2.5rem;
+        }
+
+        .category {
+            color: var(--accent-color);
+            text-transform: uppercase;
+            font-size: 0.8rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            display: inline-block;
+            margin-bottom: 0.5rem;
         }
 
         h1 {
-            color: #fff;
-            margin-bottom: 0.5rem;
-            font-size: 2.5rem;
+            font-size: 2.6rem;
+            line-height: 1.25;
+            font-weight: 800;
+            letter-spacing: -1px;
+            margin: 0 0 1rem 0;
+            color: #111;
         }
 
-        .accent {
-            color: var(--accent-color);
-            font-family: monospace;
-        }
-
-        .subtitle {
-            color: var(--text-muted);
-            font-size: 1.2rem;
-            margin-top: 0;
-        }
-
-        .section-title {
-            color: #fff;
-            border-bottom: 2px solid var(--card-bg);
-            padding-bottom: 0.5rem;
-            margin-top: 3rem;
-        }
-
-        .card {
-            background-color: var(--card-bg);
-            border: 1px solid #30363d;
-            border-radius: 6px;
-            padding: 1.5rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        .meta-info {
+            display: flex;
+            align-items: center;
             gap: 1rem;
-        }
-
-        .contact-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 1.5rem;
-            margin-top: 1.5rem;
-        }
-
-        .skill-badge {
-            background: #21262d;
-            border: 1px solid #30363d;
-            padding: 0.5rem 1rem;
-            border-radius: 4px;
-            text-align: center;
-            font-family: monospace;
             font-size: 0.9rem;
+            color: var(--muted-text);
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 1.5rem;
         }
 
-        .contact-item {
-            background: #1f242c;
-            border: 1px solid #30363d;
-            padding: 1rem;
-            border-radius: 6px;
-            text-align: left;
-        }
-
-        .contact-label {
-            font-family: monospace;
-            color: var(--accent-color);
-            font-size: 0.85rem;
-            text-transform: uppercase;
-            margin-bottom: 0.25rem;
-            display: block;
-        }
-
-        .contact-value a {
-            color: #fff;
-            text-decoration: none;
-            font-weight: 500;
-            transition: color 0.2s ease;
-        }
-
-        .contact-value a:hover {
-            color: var(--accent-color);
-        }
-
-        .btn {
-            display: inline-block;
-            background-color: transparent;
-            color: var(--accent-color);
-            border: 1px solid var(--accent-color);
-            padding: 0.75rem 1.5rem;
-            border-radius: 4px;
-            text-decoration: none;
-            font-weight: bold;
-            font-family: monospace;
-            transition: all 0.3s ease;
-            margin-top: 1rem;
-        }
-
-        .btn:hover {
+        .author-img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
             background-color: var(--accent-color);
-            color: var(--bg-color);
-            box-shadow: 0 0 15px rgba(0, 255, 102, 0.4);
-            cursor: pointer;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
         }
 
-        footer {
-            text-align: center;
-            padding: 3rem;
-            color: var(--text-muted);
+        .author-name {
+            color: var(--text-color);
+            font-weight: 600;
+        }
+
+        /* Article Body styling */
+        article p {
+            font-size: 1.15rem;
+            margin-bottom: 1.75rem;
+            color: #292929;
+        }
+
+        article p::first-letter {
+            font-size: 1.15rem;
+        }
+
+        /* Highlight feature block quote */
+        .highlight-quote {
+            border-left: 4px solid var(--accent-color);
+            padding-left: 1.5rem;
+            margin: 2rem 0;
+            font-style: italic;
+            font-size: 1.25rem;
+            color: var(--accent-dark);
+            font-weight: 500;
+        }
+
+        /* Footer / Author Badge Box */
+        .author-bio-card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-top: 4rem;
+            display: flex;
+            gap: 1.5rem;
+            align-items: center;
+        }
+
+        .bio-text h3 {
+            margin: 0 0 0.25rem 0;
+            font-size: 1.1rem;
+        }
+
+        .bio-text p {
+            margin: 0;
             font-size: 0.9rem;
+            color: var(--muted-text);
+            line-height: 1.5;
         }
     </style>
 </head>
 <body>
 
-    <header>
-        <h1><span class="accent">$</span> Anees | Penetration Tester</h1>
-        <p class="subtitle">Securing networks, finding flaws, protecting data.</p>
-        <a href="#contact" class="btn">Initialize_Contact()</a>
-    </header>
+    <nav>
+        <a href="#" class="logo">EcoPulse.</a>
+        <div class="nav-links">
+            <span>Articles</span>
+            <span>Research</span>
+            <span>About</span>
+        </div>
+    </nav>
 
     <div class="container">
-        <section id="about">
-            <h2 class="section-title">About Me</h2>
-            <div class="card">
-                <p>Hi! I’m a 16-year-old penetration tester specializing in identifying and patching system vulnerabilities. Age doesn't limit capability—I’ve dedicated years to mastering network security, web application pen-testing, and data defense.</p>
-                <p>I help businesses and individuals find security gaps before malicious actors do. Every assessment I run comes with a detailed, clear, and actionable report outlining exactly how to secure your assets.</p>
-            </div>
-        </section>
-
-        <section id="skills">
-            <h2 class="section-title">Core Skills</h2>
-            <div class="grid">
-                <div class="skill-badge">Web App Pen-Testing</div>
-                <div class="skill-badge">Network Security</div>
-                <div class="skill-badge">Vulnerability Analysis</div>
-                <div class="skill-badge">OWASP Top 10</div>
-                <div class="skill-badge">Linux / Bash</div>
-                <div class="skill-badge">Report Writing</div>
-            </div>
-        </section>
-
-        <section id="services">
-            <h2 class="section-title">Services Provided</h2>
-            <div class="card">
-                <h3>🔍 Web Application Audit</h3>
-                <p>Deep-dive analysis of your web pages to check for common flaws like SQL Injection, XSS, and broken authentication configurations.</p>
-            </div>
-            <div class="card">
-                <h3>🛡️ Vulnerability Assessments</h3>
-                <p>Scanning and checking target infrastructures to find outdated software, weak configurations, and easily exploitable access points.</p>
-            </div>
-        </section>
-
-        <section id="contact">
-            <h2 class="section-title">Secure a Consultation</h2>
-            <div class="card">
-                <p style="text-align: center; margin-bottom: 1.5rem;">Need your systems stress-tested? Reach out via any of the secure channels below to collaborate.</p>
-                
-                <div class="contact-grid">
-                    <div class="contact-item">
-                        <span class="contact-label">// email_address</span>
-                        <div class="contact-value"><a href="mailto:itsthatoldanees@gmail.com">itsthatoldanees@gmail.com</a></div>
-                    </div>
-                    <div class="contact-item">
-                        <span class="contact-label">// instagram</span>
-                        <div class="contact-value"><a href="https://instagram.com/aneesync" target="_blank">@aneesync</a></div>
-                    </div>
-                    <div class="contact-item">
-                        <span class="contact-label">// fiverr_gigs</span>
-                        <div class="contact-value"><a href="https://www.fiverr.com/your_username" target="_blank">Order Pen-Test</a></div>
-                    </div>
+        <header>
+            <span class="category">Environmental Science</span>
+            <h1>The Silent Canopy: Analyzing the Global Impact of Deforestation</h1>
+            
+            <div class="meta-info">
+                <div class="author-img">A</div>
+                <div>
+                    By <span class="author-name">Anees Khan</span><br>
+                    <span>May 23, 2026 · 4 min read</span>
                 </div>
             </div>
-        </section>
-    </div>
+        </header>
 
-    <footer>
-        <p>© 2026 Anees. All assessments performed under strict ethical agreements.</p>
-    </footer>
+        <article>
+            <p>Forests are the lungs of our planet, serving as critical pillars of biodiversity, climate regulation, and human survival. Covering roughly 31% of the world’s land area, these vast ecosystems provide habitats for millions of species and regulate the delicate balance of gases in our atmosphere. However, this essential green canopy is rapidly disappearing. Deforestation—the permanent removal of trees to clear land for agriculture, logging, and urban expansion—has accelerated at an alarming rate. It stands today as one of the most pressing environmental crises of the modern era, carrying devastating consequences for global climates and ecosystems.</p>
+
+            <p>The primary driver of global deforestation is commercial human activity. Large-scale industrial agriculture, particularly cattle ranching and the cultivation of vast monocultures like palm oil and soy, accounts for the vast majority of forest loss. Driven by shifting consumer demands, massive tracts of pristine rainforest, such as the Amazon, are routinely burned or bulldozed. Additionally, both legal and illegal logging operations systematically deplete forests to satisfy the global demand for timber and paper products, while urban sprawl continuously encroaches on natural woodland boundaries.</p>
+
+            <div class="highlight-quote">
+                "Removing trees disrupts the local water cycle; without robust root systems to anchor the soil, deforested regions experience extreme erosion and vulnerability to flash floods."
+            </div>
+
+            <p>The immediate ecological cost of this destruction is a catastrophic loss of biodiversity. Forests are home to over 80% of the world’s terrestrial species of animals, plants, and insects. When a forest is fragmented or completely cleared, countless organisms lose their natural habitats, pushing vulnerable species toward irreversible extinction. Furthermore, removing trees disrupts the local water cycle; without a dense canopy to intercept rainfall and robust root systems to anchor the soil, deforested regions experience severe soil erosion, nutrient depletion, and an increased vulnerability to destructive flash floods.</p>
+
+            <p>Beyond local ecological disruption, deforestation is a primary catalyst for global climate change. Trees act as massive natural carbon sinks, absorbing billions of metric tons of carbon dioxide ($CO_2$) from the atmosphere through photosynthesis. When forests are cut down or burned, that stored carbon is instantly released back into the atmosphere as greenhouse gases. In fact, deforestation contributes to roughly 10% of global warming emissions. The loss of these natural carbon sponges creates a dangerous feedback loop, accelerating global temperature rises, shifting unpredictable weather patterns, and worsening severe weather events across the globe.</p>
+
+            <p>In conclusion, deforestation is not merely a localized environmental concern; it is a global crisis that threatens the foundational stability of our planet's biosphere. The rapid expansion of agricultural and industrial frontiers has extracted a heavy toll on our atmosphere, biodiversity, and soil integrity. Addressing this crisis requires a unified shift toward sustainable land management, strict enforcement against illegal logging, and aggressive global reforestation initiatives. Preserving our remaining forests is not just an act of environmental conservation; it is an absolute necessity for securing a stable, habitable world for future generations.</p>
+        </article>
+
+        <div class="author-bio-card">
+            <div class="author-img" style="width: 50px; height: 50px; font-size: 1.2rem;">A</div>
+            <div class="bio-text">
+                <h3>Written by Anees Khan</h3>
+                <p>Professional content writer and researcher specializing in structural essays, analytical deep-dives, and comprehensive expository prose.</p>
+            </div>
+        </div>
+    </div>
 
 </body>
 </html>
