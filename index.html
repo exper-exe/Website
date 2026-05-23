@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Al-Hilal Annual Magazine | AI in Healthcare Project</title>
+    <title>The Crescent School | Al-Hilal 2024</title>
     <style>
-        /* CSS Reset & Core Styling */
+        /* Core Reset to force exact 1280x1024 fit without scrolling */
         * {
             margin: 0;
             padding: 0;
@@ -13,346 +13,360 @@
         }
 
         body {
-            font-family: 'Georgia', 'Times New Roman', serif;
-            background-color: #f7f5f0; /* Traditional off-white/cream paper texture color */
-            color: #2c2c2c;
-            line-height: 1.6;
-            padding: 20px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #0b0f17; /* Deep Midnight Dark Mode */
+            color: #e2e8f0;
+            width: 1280px;
+            height: 1024px;
+            overflow: hidden; /* Prevents scrolling for the perfect single screenshot */
+            display: flex;
+            flex-direction: column;
+            padding: 24px;
         }
 
-        /* Magazine Header */
-        .magazine-header {
-            text-align: center;
-            border-bottom: 4px double #0d47a1; /* Deep institutional blue/green */
-            padding-bottom: 15px;
-            margin-bottom: 30px;
-            max-width: 1100px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .magazine-title {
-            font-size: 3.5rem;
-            font-weight: 700;
-            color: #064e3b; /* Deep Emerald Crest Color */
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            font-family: 'Times New Roman', serif;
-        }
-
-        .magazine-meta {
-            font-size: 0.9rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            color: #6b7280;
-            margin-top: 5px;
+        /* Top Header Board */
+        header {
             display: flex;
             justify-content: space-between;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
-            border-top: 1px solid #d1d5db;
-            padding-top: 5px;
+            align-items: center;
+            background: #111827;
+            border: 1px solid #1f293d;
+            border-radius: 12px;
+            padding: 16px 30px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
         }
 
-        /* Main Container Layout */
-        .main-container {
-            max-width: 1100px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: 3fr 1fr;
-            gap: 40px;
+        .school-info h1 {
+            font-size: 1.8rem;
+            color: #ffffff;
+            letter-spacing: 1px;
+            font-family: 'Times New Roman', Times, serif;
         }
 
-        /* Article Structure */
-        .article-container {
-            background: #ffffff;
-            padding: 40px;
-            border-radius: 4px;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
-            border-top: 3px solid #d97706; /* Elegant Amber/Gold Accent Bar */
-        }
-
-        .project-tag {
-            display: inline-block;
-            background-color: #fef3c7;
-            color: #b45309;
-            font-size: 0.75rem;
-            font-weight: bold;
+        .school-info p {
+            color: #10b981; /* Emerald Green Accent */
+            font-size: 0.9rem;
+            font-weight: 600;
             text-transform: uppercase;
+        }
+
+        .magazine-tag {
+            text-align: right;
+        }
+
+        .vol-badge {
+            background: #b91c1c; /* Crimson Red Accent */
+            color: white;
+            padding: 4px 12px;
+            border-radius: 6px;
+            font-weight: bold;
+            font-size: 0.85rem;
+        }
+
+        .year-text {
+            color: #9ca3af;
+            font-size: 0.85rem;
+            margin-top: 5px;
+        }
+
+        /* Layout Grid */
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: 280px 1fr;
+            gap: 20px;
+            flex: 1;
+            min-height: 0; /* Important for forcing child constraints */
+        }
+
+        /* LEFT SIDEBAR: Navigation & Recreated Crest */
+        .sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        /* Reconstructed School Crest CSS Widget */
+        .crest-widget {
+            background: #111827;
+            border: 1px solid #1f293d;
+            border-radius: 12px;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+
+        .shield {
+            width: 100px;
+            height: 120px;
+            background: linear-gradient(to bottom, #15803d 50%, #b91c1c 50%); /* Half Green, Half Red */
+            border: 3px solid #ffffff;
+            border-top-left-radius: 50px 20px;
+            border-top-right-radius: 50px 20px;
+            border-bottom-left-radius: 50px 100px;
+            border-bottom-right-radius: 50px 100px;
+            position: relative;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            padding: 10px 0;
+            align-items: center;
+        }
+
+        /* Crescent & Star Vector Element */
+        .crescent-star {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            box-shadow: -8px 4px 0 0 #ffffff;
+            transform: rotate(-25deg);
+            margin-left: 8px;
+            position: relative;
+        }
+        .crescent-star::after {
+            content: "★";
+            color: white;
+            position: absolute;
+            top: -2px;
+            right: -8px;
+            font-size: 10px;
+        }
+
+        /* Leaves & Central Icon representation */
+        .crest-wreath {
+            color: white;
+            font-size: 1.5rem;
+            line-height: 1;
+            margin-bottom: 8px;
+        }
+
+        /* Blue School Ribbon banner */
+        .ribbon {
+            background: #2563eb;
+            color: white;
+            font-size: 0.65rem;
+            font-weight: bold;
             padding: 4px 10px;
-            border-radius: 2px;
-            margin-bottom: 15px;
+            border-radius: 4px;
+            margin-top: -10px;
+            z-index: 2;
+            width: 130px;
+            text-center: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+            text-transform: uppercase;
             letter-spacing: 0.5px;
         }
 
-        h1.article-title {
-            font-size: 2.4rem;
-            line-height: 1.2;
-            color: #111827;
-            margin-bottom: 10px;
-            font-weight: 800;
-        }
-
-        .author-byline {
-            font-style: italic;
-            color: #4b5563;
-            margin-bottom: 25px;
-            font-size: 1.1rem;
-            border-bottom: 1px dashed #e5e7eb;
-            padding-bottom: 15px;
-        }
-
-        /* Editorial Multi-column setup for the article body */
-        .article-body {
-            font-size: 1.1rem;
-            text-align: justify;
-        }
-
-        .lead-paragraph {
-            font-size: 1.25rem;
-            line-height: 1.7;
-            color: #1f2937;
-            margin-bottom: 20px;
-            font-weight: 500;
-        }
-
-        .lead-paragraph::first-letter {
-            float: left;
-            font-size: 4.2rem;
-            line-height: 0.8;
-            padding-top: 4px;
-            padding-right: 8px;
-            padding-left: 3px;
-            font-family: 'Times New Roman', serif;
-            color: #064e3b;
-            font-weight: bold;
-        }
-
-        .article-text {
-            column-count: 2;
-            column-gap: 30px;
-            column-rule: 1px solid #f3f4f6;
-        }
-
-        .article-text p {
-            margin-bottom: 18px;
-            text-indent: 20px;
-        }
-
-        .article-text p:first-of-type {
-            text-indent: 0; /* Don't indent the absolute first paragraph under headings */
-        }
-
-        .article-text h3 {
-            column-span: all;
-            font-size: 1.5rem;
-            color: #064e3b;
-            margin: 25px 0 15px 0;
-            border-left: 4px solid #d97706;
-            padding-left: 10px;
-            font-family: sans-serif;
-            letter-spacing: -0.5px;
-        }
-
-        /* Blockquote Callout box */
-        blockquote {
-            column-span: all;
-            background-color: #f9fafb;
-            border-left: 4px solid #064e3b;
+        .index-widget {
+            background: #111827;
+            border: 1px solid #1f293d;
+            border-radius: 12px;
             padding: 20px;
-            margin: 25px 0;
-            font-style: italic;
-            font-size: 1.2rem;
-            color: #374151;
-            position: relative;
-        }
-
-        /* Sidebar Styling (Representing the surrounding Annual Book) */
-        .magazine-sidebar {
-            display: flex;
-            flex-direction: column;
-            gap: 25px;
-        }
-
-        .sidebar-widget {
-            background: #ffffff;
-            padding: 20px;
-            border-radius: 4px;
-            border: 1px solid #e5e7eb;
+            flex: 1;
         }
 
         .widget-title {
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             text-transform: uppercase;
+            color: #9ca3af;
             letter-spacing: 1px;
-            color: #064e3b;
-            border-bottom: 2px solid #064e3b;
-            padding-bottom: 5px;
-            margin-bottom: 15px;
-            font-weight: bold;
+            margin-bottom: 12px;
+            border-bottom: 1px solid #1f293d;
+            padding-bottom: 6px;
         }
 
-        .sidebar-widget ul {
+        .index-list {
             list-style: none;
         }
 
-        .sidebar-widget ul li {
-            margin-bottom: 10px;
-            font-size: 0.9rem;
-            border-bottom: 1px solid #f3f4f6;
-            padding-bottom: 8px;
-        }
-
-        .sidebar-widget ul li a {
-            color: #4b5563;
-            text-decoration: none;
-        }
-
-        .sidebar-widget ul li a:hover {
-            color: #d97706;
-            text-decoration: underline;
-        }
-
-        .metadata-list table {
-            width: 100%;
+        .index-list li {
+            padding: 8px 10px;
             font-size: 0.85rem;
-            color: #4b5563;
+            border-radius: 6px;
+            margin-bottom: 4px;
+            color: #9ca3af;
         }
 
-        .metadata-list td {
-            padding: 6px 0;
+        .index-list li.active {
+            background: #1f293d;
+            color: #ffffff;
+            font-weight: 600;
+            border-left: 3px solid #10b981;
         }
 
-        .metadata-list td:first-child {
+        /* RIGHT PANEL: Article Document Viewer */
+        .article-view {
+            background: #111827;
+            border: 1px solid #1f293d;
+            border-radius: 12px;
+            padding: 30px;
+            display: flex;
+            flex-direction: column;
+            min-height: 0;
+        }
+
+        .article-meta {
+            margin-bottom: 20px;
+        }
+
+        .tag {
+            background: rgba(16, 185, 129, 0.1);
+            color: #10b981;
+            padding: 4px 10px;
+            font-size: 0.75rem;
+            border-radius: 6px;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        .article-title {
+            font-family: 'Georgia', serif;
+            font-size: 1.9rem;
+            color: #ffffff;
+            margin-top: 10px;
+            margin-bottom: 6px;
+        }
+
+        .author {
+            font-size: 0.85rem;
+            color: #9ca3af;
+        }
+
+        /* Newspaper Column Simulation tailored perfectly to size bounds */
+        .article-content {
+            font-family: 'Georgia', serif;
+            font-size: 1.05rem;
+            line-height: 1.6;
+            color: #cbd5e1;
+            column-count: 2;
+            column-gap: 30px;
+            text-align: justify;
+            flex: 1;
+            min-height: 0;
+        }
+
+        .article-content p {
+            margin-bottom: 14px;
+        }
+
+        .article-content p::first-letter {
+            float: left;
+            font-size: 3rem;
+            line-height: 0.8;
+            padding-top: 4px;
+            padding-right: 8px;
+            color: #10b981;
             font-weight: bold;
-            color: #111827;
         }
 
-        /* Responsive Design */
-        @media (max-width: 850px) {
-            .main-container {
-                grid-template-columns: 1fr;
-            }
-            .article-text {
-                column-count: 1;
-            }
-            .magazine-title {
-                font-size: 2.5rem;
-            }
+        .article-content h4 {
+            column-span: all;
+            font-family: sans-serif;
+            font-size: 1.2rem;
+            color: #ffffff;
+            margin: 15px 0 10px 0;
+            border-left: 3px solid #b91c1c;
+            padding-left: 8px;
+        }
+
+        .quote-box {
+            column-span: all;
+            background: #1f293d;
+            border-left: 4px solid #10b981;
+            padding: 14px 20px;
+            margin: 15px 0;
+            font-style: italic;
+            border-radius: 0 8px 8px 0;
+            font-size: 1rem;
+            color: #e2e8f0;
+        }
+
+        footer {
+            text-align: center;
+            font-size: 0.75rem;
+            color: #4b5563;
+            margin-top: 15px;
         }
     </style>
 </head>
 <body>
 
-    <!-- Al-Hilal School Magazine Header Banner -->
-    <header class="magazine-header">
-        <div class="magazine-title">Al-Hilal</div>
-        <div class="magazine-meta">
-            <span>The Official Annual Publication</span>
-            <span>Volume XXVI — 2026</span>
-            <span>Student Submission Section</span>
+    <header>
+        <div class="school-info">
+            <h1>THE CRESCENT SCHOOL</h1>
+            <p>Annual Student Portfolio Chronicle</p>
+        </div>
+        <div class="magazine-tag">
+            <span class="vol-badge">AL-HILAL COMPILATION</span>
+            <div class="year-text">Academic Year Archive © 2024</div>
         </div>
     </header>
 
-    <!-- Layout Container -->
-    <main class="main-container">
-
-        <!-- The Main Article Content Area -->
-        <article class="article-container">
-            <span class="project-tag">Science &amp; Technology Project</span>
-            <h1 class="article-title">The Digital Pulse: How Artificial Intelligence is Reshaping the Modern Hospital</h1>
-            <div class="author-byline">Written by Anees Khan — Department of Computer Studies</div>
-
-            <div class="article-body">
-                <p class="lead-paragraph">
-                    Hospitals have long stood as monuments to human endurance, relying entirely on the sharp instincts and manual dedication of doctors and nurses. However, a quiet revolution is currently unfolding within the white corridors of modern medical institutions. Artificial Intelligence is moving out of the textbook and into the emergency room.
-                </p>
-
-                <div class="article-text">
-                    <p>
-                        The introduction of sophisticated AI modeling is radically shifting how medical personnel triage patients, process historical files, and predict complications. What used to take clinical observation teams hours of continuous check-ins can now be monitored dynamically in microseconds, entirely transforming hospital frameworks.
-                    </p>
-
-                    <h3>Predictive Diagnostics and Early Intervention</h3>
-                    <p>
-                        The primary contribution of AI to modern clinical floors lies in its pattern recognition capabilities. Large Language Models and algorithmic networks process hundreds of biomarkers from incoming trauma data streams instantaneously. This allows machines to cross-examine current patient vitals against historical medical databases spanning decades.
-                    </p>
-                    <p>
-                        For instance, sepsis is an aggressive killer in hospital wards that can be incredibly difficult to track early on. Modern AI tracking engines scan subtle, cascading shifts across blood charts, baseline temperatures, and heart rates to alert nursing stations hours before human observation can catch the critical spiral.
-                    </p>
-
-                    <blockquote>
-                        "The goal is not to substitute the human warmth or clinical judgment of a doctor, but to hand them a digital lens capable of seeing microscopic anomalies across thousands of records simultaneously."
-                    </blockquote>
-
-                    <h3>Streamlining the Burden of Documentation</h3>
-                    <p>
-                        Beyond the high-intensity theater of surgical suites, artificial intelligence is tackling a quieter crisis: administrative burnout. Medical professionals report spending up to a third of their active shifts manually logging notes, filling out forms, and filing compliance paperwork.
-                    </p>
-                    <p>
-                        Automated ambient voice tools now listen safely and securely during consultation sessions, turning spoken physician dialogue into structured, beautifully formatted charts automatically. This minimizes human interface errors and guarantees that accurate patient data moves flawlessly between different hospital departments.
-                    </p>
-
-                    <h3>Surgical Precision and Robotic Assistance</h3>
-                    <p>
-                        In the operating room, intelligent computer vision algorithms provide surgeons with enhanced real-time spatial awareness. During delicate minimally invasive procedures, AI tracking programs overlay digital pathways onto video feeds, highlighting structural boundaries and major vessels to prevent accidental nicks. 
-                    </p>
-                    <p>
-                        As deep learning models continue to adapt alongside expert surgical practices, the hospital of tomorrow promises to be safer, remarkably more efficient, and hyper-focused on individualized recovery pathways. The fusion of machine precision and human empathy is resetting the standard of public health.
-                    </p>
-                </div>
-            </div>
-        </article>
-
-        <!-- Sidebar Panel: Representing context of the Al-Hilal Book structure -->
-        <aside class="magazine-sidebar">
+    <div class="dashboard-grid">
+        
+        <div class="sidebar">
             
-            <div class="sidebar-widget">
-                <div class="widget-title">Project Details</div>
-                <div class="metadata-list">
-                    <table>
-                        <tr>
-                            <td>Student:</td>
-                            <td>Anees Khan</td>
-                        </tr>
-                        <tr>
-                            <td>Subject:</td>
-                            <td>English &amp; Tech Blog</td>
-                        </tr>
-                        <tr>
-                            <td>Submission:</td>
-                            <td>Annual Anthology</td>
-                        </tr>
-                        <tr>
-                            <td>Grade:</td>
-                            <td>O-Level Division</td>
-                        </tr>
-                    </table>
+            <div class="crest-widget">
+                <div class="shield">
+                    <div class="crescent-star"></div>
+                    <div class="crest-wreath">🌿🦅🌿</div>
                 </div>
+                <div class="ribbon">The Crescent School</div>
             </div>
 
-            <div class="sidebar-widget">
-                <div class="widget-title">Al-Hilal Vol. 26 Contents</div>
-                <ul>
-                    <li><a href="#">Principal's Annual Address</a></li>
-                    <li><a href="#">Poetry: Echoes of the School Yard</a></li>
-                    <li><a href="#">Sports Day 2026: A Photo Essay</a></li>
-                    <li><a href="#" style="font-weight: bold; color: #064e3b;">→ AI in the Hospital Industry</a></li>
-                    <li><a href="#">History of Our Crest &amp; Traditions</a></li>
+            <div class="index-widget">
+                <div class="widget-title">Al-Hilal 2024 Contents</div>
+                <ul class="index-list">
+                    <li>Principal's Address 2024</li>
+                    <li>Poetry &amp; Creative Essays</li>
+                    <li class="active">AI in the Hospital Industry</li>
+                    <li>Sports Day Retrospective</li>
+                    <li>Annual Photographic Gallery</li>
+                    <li>Student Honors Roll</li>
                 </ul>
             </div>
+        </div>
 
-            <div class="sidebar-widget" style="background-color: #fef3c7; border: 1px solid #f59e0b;">
-                <div class="widget-title" style="color: #b45309; border-bottom: 2px solid #b45309;">Editorial Board Note</div>
-                <p style="font-size: 0.85rem; color: #78350f; line-height: 1.4;">
-                    This article was selected for the 2026 Al-Hilal Academic Showcase category for its depth of research regarding emerging technology trends.
-                </p>
+        <div class="article-view">
+            <div class="article-meta">
+                <span class="tag">Selected Feature Article</span>
+                <h2 class="article-title">The Digital Pulse: How Artificial Intelligence is Reshaping the Modern Hospital</h2>
+                <div class="author">Submitted by: O-Level Computer Studies Division — Batch of 2024</div>
             </div>
 
-        </aside>
+            <div class="article-content">
+                <p>
+                    Hospitals have long stood as monuments to human endurance, relying entirely on the sharp instincts and manual dedication of healthcare practitioners. However, a quiet revolution unfolded throughout 2024 within the white corridors of modern medical institutions. Artificial Intelligence has systematically migrated out of the textbook and directly into clinical implementation.
+                </p>
+                <p>
+                    The integration of sophisticated neural modeling is radically shifting how medical personnel triage incoming casualties, process historical data files, and minimize diagnostics latency. What used to require complex physical team monitoring can now be cross-examined automatically, transforming structural metrics.
+                </p>
 
-    </main>
+                <h4>Predictive Analysis and Early Diagnostic Control</h4>
+                <p>
+                    The primary contribution of AI to medical workflows lies in pattern recognition capabilities. Large-scale processing models review thousands of biological markers simultaneously, cross-examining data streams against deep historical patient records instantly. 
+                </p>
+
+                <div class="quote-box">
+                    "The goal of medical machine modeling is not to substitute the vital human empathy or wisdom of a doctor, but to hand them a digital lens capable of mapping critical anomalies in real time."
+                </div>
+
+                <p>
+                    For instance, conditions like sepsis are notoriously difficult to capture during initial trauma check-ins. Modern pattern engines track minute, cascading indicators across heart matrices and blood charts to alert core monitoring desks hours before visible warning signs manifest.
+                </p>
+                <p>
+                    Furthermore, AI handles administrative fatigue by accurately formatting consultation dictation. By decreasing document data load, clinicians preserve vital hours to dedicate directly to dynamic patient care, resetting the baseline standard of modern public healthcare systems.
+                </p>
+            </div>
+        </div>
+
+    </div>
+
+    <footer>Viewport Locked to 1280x1024 Resolution for Presentation Export | Al-Hilal Editorial Board 2024</footer>
 
 </body>
 </html>
