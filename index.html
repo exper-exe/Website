@@ -1,372 +1,1016 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Crescent School | Al-Hilal 2024</title>
-    <style>
-        /* Core Reset to force exact 1280x1024 fit without scrolling */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>VoxArena - Voice Debate Rooms</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0d1117;
+      --card: rgba(255,255,255,0.08);
+      --border: rgba(255,255,255,0.1);
+      --text: #f5f5f5;
+      --muted: #9ca3af;
+      --primary: #7c3aed;
+      --secondary: #06b6d4;
+      --success: #22c55e;
+      --danger: #ef4444;
+      --shadow: 0 12px 40px rgba(0,0,0,0.4);
+      --glass: blur(18px);
+    }
 
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #0b0f17; /* Deep Midnight Dark Mode */
-            color: #e2e8f0;
-            width: 1280px;
-            height: 1024px;
-            overflow: hidden; /* Prevents scrolling for the perfect single screenshot */
-            display: flex;
-            flex-direction: column;
-            padding: 24px;
-        }
+    body.light {
+      --bg: #f3f4f6;
+      --card: rgba(255,255,255,0.75);
+      --border: rgba(0,0,0,0.08);
+      --text: #111827;
+      --muted: #4b5563;
+      --shadow: 0 12px 30px rgba(0,0,0,0.08);
+    }
 
-        /* Top Header Board */
-        header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background: #111827;
-            border: 1px solid #1f293d;
-            border-radius: 12px;
-            padding: 16px 30px;
-            margin-bottom: 20px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
-        }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Inter', sans-serif;
+    }
 
-        .school-info h1 {
-            font-size: 1.8rem;
-            color: #ffffff;
-            letter-spacing: 1px;
-            font-family: 'Times New Roman', Times, serif;
-        }
+    body {
+      background: radial-gradient(circle at top left, rgba(124,58,237,0.25), transparent 35%),
+                  radial-gradient(circle at bottom right, rgba(6,182,212,0.2), transparent 30%),
+                  var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      overflow-x: hidden;
+      transition: 0.4s ease;
+    }
 
-        .school-info p {
-            color: #10b981; /* Emerald Green Accent */
-            font-size: 0.9rem;
-            font-weight: 600;
-            text-transform: uppercase;
-        }
+    .navbar {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      backdrop-filter: var(--glass);
+      background: rgba(10,10,10,0.35);
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 18px 40px;
+    }
 
-        .magazine-tag {
-            text-align: right;
-        }
+    body.light .navbar {
+      background: rgba(255,255,255,0.6);
+    }
 
-        .vol-badge {
-            background: #b91c1c; /* Crimson Red Accent */
-            color: white;
-            padding: 4px 12px;
-            border-radius: 6px;
-            font-weight: bold;
-            font-size: 0.85rem;
-        }
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 800;
+      font-size: 1.4rem;
+      letter-spacing: 1px;
+    }
 
-        .year-text {
-            color: #9ca3af;
-            font-size: 0.85rem;
-            margin-top: 5px;
-        }
+    .logo-badge {
+      width: 42px;
+      height: 42px;
+      border-radius: 14px;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      box-shadow: var(--shadow);
+    }
 
-        /* Layout Grid */
-        .dashboard-grid {
-            display: grid;
-            grid-template-columns: 280px 1fr;
-            gap: 20px;
-            flex: 1;
-            min-height: 0; /* Important for forcing child constraints */
-        }
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
 
-        /* LEFT SIDEBAR: Navigation & Recreated Crest */
-        .sidebar {
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-        }
+    .theme-switch {
+      width: 65px;
+      height: 34px;
+      background: rgba(255,255,255,0.12);
+      border-radius: 50px;
+      position: relative;
+      cursor: pointer;
+      border: 1px solid var(--border);
+    }
 
-        /* Reconstructed School Crest CSS Widget */
-        .crest-widget {
-            background: #111827;
-            border: 1px solid #1f293d;
-            border-radius: 12px;
-            padding: 20px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-        }
+    .theme-switch::before {
+      content: '';
+      position: absolute;
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      background: white;
+      top: 3px;
+      left: 4px;
+      transition: 0.3s ease;
+    }
 
-        .shield {
-            width: 100px;
-            height: 120px;
-            background: linear-gradient(to bottom, #15803d 50%, #b91c1c 50%); /* Half Green, Half Red */
-            border: 3px solid #ffffff;
-            border-top-left-radius: 50px 20px;
-            border-top-right-radius: 50px 20px;
-            border-bottom-left-radius: 50px 100px;
-            border-bottom-right-radius: 50px 100px;
-            position: relative;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.5);
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            padding: 10px 0;
-            align-items: center;
-        }
+    body.light .theme-switch::before {
+      left: 33px;
+      background: #111827;
+    }
 
-        /* Crescent & Star Vector Element */
-        .crescent-star {
-            width: 32px;
-            height: 32px;
-            border-radius: 50%;
-            box-shadow: -8px 4px 0 0 #ffffff;
-            transform: rotate(-25deg);
-            margin-left: 8px;
-            position: relative;
-        }
-        .crescent-star::after {
-            content: "★";
-            color: white;
-            position: absolute;
-            top: -2px;
-            right: -8px;
-            font-size: 10px;
-        }
+    .btn {
+      border: none;
+      outline: none;
+      padding: 12px 20px;
+      border-radius: 14px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: 0.25s ease;
+    }
 
-        /* Leaves & Central Icon representation */
-        .crest-wreath {
-            color: white;
-            font-size: 1.5rem;
-            line-height: 1;
-            margin-bottom: 8px;
-        }
+    .btn-primary {
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      color: white;
+      box-shadow: var(--shadow);
+    }
 
-        /* Blue School Ribbon banner */
-        .ribbon {
-            background: #2563eb;
-            color: white;
-            font-size: 0.65rem;
-            font-weight: bold;
-            padding: 4px 10px;
-            border-radius: 4px;
-            margin-top: -10px;
-            z-index: 2;
-            width: 130px;
-            text-center: center;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.3);
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
+    .btn-primary:hover {
+      transform: translateY(-2px);
+    }
 
-        .index-widget {
-            background: #111827;
-            border: 1px solid #1f293d;
-            border-radius: 12px;
-            padding: 20px;
-            flex: 1;
-        }
+    .btn-outline {
+      background: transparent;
+      border: 1px solid var(--border);
+      color: var(--text);
+    }
 
-        .widget-title {
-            font-size: 0.85rem;
-            text-transform: uppercase;
-            color: #9ca3af;
-            letter-spacing: 1px;
-            margin-bottom: 12px;
-            border-bottom: 1px solid #1f293d;
-            padding-bottom: 6px;
-        }
+    .hero {
+      padding: 90px 40px 50px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 40px;
+      align-items: center;
+    }
 
-        .index-list {
-            list-style: none;
-        }
+    .hero h1 {
+      font-size: clamp(2.8rem, 6vw, 5rem);
+      line-height: 1.05;
+      margin-bottom: 24px;
+      font-weight: 800;
+    }
 
-        .index-list li {
-            padding: 8px 10px;
-            font-size: 0.85rem;
-            border-radius: 6px;
-            margin-bottom: 4px;
-            color: #9ca3af;
-        }
+    .gradient-text {
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
 
-        .index-list li.active {
-            background: #1f293d;
-            color: #ffffff;
-            font-weight: 600;
-            border-left: 3px solid #10b981;
-        }
+    .hero p {
+      color: var(--muted);
+      line-height: 1.8;
+      font-size: 1.05rem;
+      margin-bottom: 28px;
+      max-width: 620px;
+    }
 
-        /* RIGHT PANEL: Article Document Viewer */
-        .article-view {
-            background: #111827;
-            border: 1px solid #1f293d;
-            border-radius: 12px;
-            padding: 30px;
-            display: flex;
-            flex-direction: column;
-            min-height: 0;
-        }
+    .hero-buttons {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
 
-        .article-meta {
-            margin-bottom: 20px;
-        }
+    .glass-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      backdrop-filter: var(--glass);
+      border-radius: 28px;
+      box-shadow: var(--shadow);
+    }
 
-        .tag {
-            background: rgba(16, 185, 129, 0.1);
-            color: #10b981;
-            padding: 4px 10px;
-            font-size: 0.75rem;
-            border-radius: 6px;
-            font-weight: 600;
-            text-transform: uppercase;
-        }
+    .hero-panel {
+      padding: 28px;
+      position: relative;
+      overflow: hidden;
+    }
 
-        .article-title {
-            font-family: 'Georgia', serif;
-            font-size: 1.9rem;
-            color: #ffffff;
-            margin-top: 10px;
-            margin-bottom: 6px;
-        }
+    .hero-panel::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(255,255,255,0.04), transparent);
+      pointer-events: none;
+    }
 
-        .author {
-            font-size: 0.85rem;
-            color: #9ca3af;
-        }
+    .topic-box {
+      padding: 22px;
+      border-radius: 22px;
+      background: rgba(255,255,255,0.05);
+      margin-bottom: 20px;
+      border: 1px solid rgba(255,255,255,0.08);
+    }
 
-        /* Newspaper Column Simulation tailored perfectly to size bounds */
-        .article-content {
-            font-family: 'Georgia', serif;
-            font-size: 1.05rem;
-            line-height: 1.6;
-            color: #cbd5e1;
-            column-count: 2;
-            column-gap: 30px;
-            text-align: justify;
-            flex: 1;
-            min-height: 0;
-        }
+    .tag {
+      display: inline-flex;
+      padding: 8px 14px;
+      border-radius: 999px;
+      background: rgba(124,58,237,0.18);
+      color: #c4b5fd;
+      font-size: 0.85rem;
+      margin-bottom: 14px;
+    }
 
-        .article-content p {
-            margin-bottom: 14px;
-        }
+    .section {
+      padding: 50px 40px;
+    }
 
-        .article-content p::first-letter {
-            float: left;
-            font-size: 3rem;
-            line-height: 0.8;
-            padding-top: 4px;
-            padding-right: 8px;
-            color: #10b981;
-            font-weight: bold;
-        }
+    .section-title {
+      font-size: 2rem;
+      margin-bottom: 30px;
+      font-weight: 800;
+    }
 
-        .article-content h4 {
-            column-span: all;
-            font-family: sans-serif;
-            font-size: 1.2rem;
-            color: #ffffff;
-            margin: 15px 0 10px 0;
-            border-left: 3px solid #b91c1c;
-            padding-left: 8px;
-        }
+    .rooms-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 22px;
+    }
 
-        .quote-box {
-            column-span: all;
-            background: #1f293d;
-            border-left: 4px solid #10b981;
-            padding: 14px 20px;
-            margin: 15px 0;
-            font-style: italic;
-            border-radius: 0 8px 8px 0;
-            font-size: 1rem;
-            color: #e2e8f0;
-        }
+    .room-card {
+      padding: 24px;
+      transition: 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
 
-        footer {
-            text-align: center;
-            font-size: 0.75rem;
-            color: #4b5563;
-            margin-top: 15px;
-        }
-    </style>
+    .room-card:hover {
+      transform: translateY(-6px);
+    }
+
+    .room-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 16px;
+    }
+
+    .room-title {
+      font-size: 1.2rem;
+      font-weight: 700;
+    }
+
+    .live-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: var(--success);
+      box-shadow: 0 0 12px var(--success);
+    }
+
+    .room-desc {
+      color: var(--muted);
+      line-height: 1.7;
+      margin-bottom: 18px;
+      font-size: 0.95rem;
+    }
+
+    .room-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 18px;
+    }
+
+    .avatars {
+      display: flex;
+    }
+
+    .avatar {
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      border: 2px solid var(--bg);
+      margin-left: -8px;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 0.9rem;
+      font-weight: 700;
+    }
+
+    .auth-modal {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.55);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+      padding: 20px;
+    }
+
+    .auth-box {
+      width: 100%;
+      max-width: 450px;
+      padding: 32px;
+    }
+
+    .auth-box h2 {
+      margin-bottom: 24px;
+      font-size: 2rem;
+    }
+
+    .input-group {
+      margin-bottom: 18px;
+    }
+
+    .input-group label {
+      display: block;
+      margin-bottom: 8px;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .input-group input,
+    .input-group textarea,
+    .input-group select {
+      width: 100%;
+      padding: 14px 16px;
+      border-radius: 16px;
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,0.06);
+      color: var(--text);
+      resize: none;
+      outline: none;
+    }
+
+    .profile-panel {
+      display: grid;
+      grid-template-columns: 280px 1fr;
+      gap: 28px;
+    }
+
+    .profile-sidebar,
+    .profile-content {
+      padding: 26px;
+    }
+
+    .profile-image {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      margin: auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2.5rem;
+      font-weight: 800;
+      color: white;
+      margin-bottom: 20px;
+    }
+
+    .profile-sidebar h3,
+    .profile-sidebar p {
+      text-align: center;
+    }
+
+    .profile-sidebar p {
+      color: var(--muted);
+      margin-top: 8px;
+      line-height: 1.6;
+    }
+
+    .profile-stats {
+      display: flex;
+      justify-content: space-around;
+      margin-top: 24px;
+    }
+
+    .stat h4 {
+      font-size: 1.2rem;
+    }
+
+    .stat p {
+      font-size: 0.85rem;
+    }
+
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 22px;
+    }
+
+    .feature-card {
+      padding: 24px;
+    }
+
+    .feature-icon {
+      width: 56px;
+      height: 56px;
+      border-radius: 18px;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      margin-bottom: 18px;
+    }
+
+    .floating-btn {
+      position: fixed;
+      right: 28px;
+      bottom: 28px;
+      width: 68px;
+      height: 68px;
+      border-radius: 50%;
+      border: none;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      color: white;
+      font-size: 2rem;
+      cursor: pointer;
+      box-shadow: var(--shadow);
+      z-index: 50;
+    }
+
+    .footer {
+      padding: 40px;
+      text-align: center;
+      color: var(--muted);
+    }
+
+    @media(max-width: 900px) {
+      .profile-panel {
+        grid-template-columns: 1fr;
+      }
+
+      .navbar {
+        padding: 18px 20px;
+      }
+
+      .hero,
+      .section {
+        padding-left: 20px;
+        padding-right: 20px;
+      }
+    }
+  </style>
 </head>
 <body>
 
-    <header>
-        <div class="school-info">
-            <h1>THE CRESCENT SCHOOL</h1>
-            <p>Annual Student Portfolio Chronicle</p>
-        </div>
-        <div class="magazine-tag">
-            <span class="vol-badge">AL-HILAL COMPILATION</span>
-            <div class="year-text">Academic Year Archive © 2024</div>
-        </div>
-    </header>
-
-    <div class="dashboard-grid">
-        
-        <div class="sidebar">
-            
-            <div class="crest-widget">
-                <div class="shield">
-                    <div class="crescent-star"></div>
-                    <div class="crest-wreath">🌿🦅🌿</div>
-                </div>
-                <div class="ribbon">The Crescent School</div>
-            </div>
-
-            <div class="index-widget">
-                <div class="widget-title">Al-Hilal 2024 Contents</div>
-                <ul class="index-list">
-                    <li>Principal's Address 2024</li>
-                    <li>Poetry &amp; Creative Essays</li>
-                    <li class="active">AI in the Hospital Industry</li>
-                    <li>Sports Day Retrospective</li>
-                    <li>Annual Photographic Gallery</li>
-                    <li>Student Honors Roll</li>
-                </ul>
-            </div>
-        </div>
-
-        <div class="article-view">
-            <div class="article-meta">
-                <span class="tag">Selected Feature Article</span>
-                <h2 class="article-title">The Digital Pulse: How Artificial Intelligence is Reshaping the Modern Hospital</h2>
-                <div class="author">Submitted by: O-Level Computer Studies Division — Batch of 2024</div>
-            </div>
-
-            <div class="article-content">
-                <p>
-                    Hospitals have long stood as monuments to human endurance, relying entirely on the sharp instincts and manual dedication of healthcare practitioners. However, a quiet revolution unfolded throughout 2024 within the white corridors of modern medical institutions. Artificial Intelligence has systematically migrated out of the textbook and directly into clinical implementation.
-                </p>
-                <p>
-                    The integration of sophisticated neural modeling is radically shifting how medical personnel triage incoming casualties, process historical data files, and minimize diagnostics latency. What used to require complex physical team monitoring can now be cross-examined automatically, transforming structural metrics.
-                </p>
-
-                <h4>Predictive Analysis and Early Diagnostic Control</h4>
-                <p>
-                    The primary contribution of AI to medical workflows lies in pattern recognition capabilities. Large-scale processing models review thousands of biological markers simultaneously, cross-examining data streams against deep historical patient records instantly. 
-                </p>
-
-                <div class="quote-box">
-                    "The goal of medical machine modeling is not to substitute the vital human empathy or wisdom of a doctor, but to hand them a digital lens capable of mapping critical anomalies in real time."
-                </div>
-
-                <p>
-                    For instance, conditions like sepsis are notoriously difficult to capture during initial trauma check-ins. Modern pattern engines track minute, cascading indicators across heart matrices and blood charts to alert core monitoring desks hours before visible warning signs manifest.
-                </p>
-                <p>
-                    Furthermore, AI handles administrative fatigue by accurately formatting consultation dictation. By decreasing document data load, clinicians preserve vital hours to dedicate directly to dynamic patient care, resetting the baseline standard of modern public healthcare systems.
-                </p>
-            </div>
-        </div>
-
+  <nav class="navbar">
+    <div class="logo">
+      <div class="logo-badge">V</div>
+      VoxArena
     </div>
 
-    <footer>Viewport Locked to 1280x1024 Resolution for Presentation Export | Al-Hilal Editorial Board 2024</footer>
+    <div class="nav-actions">
+      <a href="#rooms" class="btn btn-outline" style="text-decoration:none; display:inline-flex; align-items:center;">Rooms</a>
+      <a href="#features" class="btn btn-outline" style="text-decoration:none; display:inline-flex; align-items:center;">Features</a>
+      <a href="#profile" class="btn btn-outline" style="text-decoration:none; display:inline-flex; align-items:center;">Profile</a>
+      <div class="theme-switch" onclick="toggleTheme()"></div>
+      <button class="btn btn-outline" onclick="openLogin()">Login</button>
+      <button class="btn btn-primary" onclick="openSignup()">Sign Up</button>
+    </div>
+  </nav>
 
+  <section class="hero">
+    <div>
+      <h1>
+        Voice Chat.
+        <span class="gradient-text">Debate Live.</span>
+        Build Communities.
+      </h1>
+
+      <p>
+        Join voice rooms hosted by creators and communities where random topics are generated instantly.
+        Debate, discuss, speech battle, or share your opinion depending on the selected game mode.
+      </p>
+
+      <div class="hero-buttons">
+        <button class="btn btn-primary">Start Speaking</button>
+        <button class="btn btn-outline">Explore Rooms</button>
+      </div>
+    </div>
+
+    <div class="glass-card hero-panel">
+      <div class="topic-box">
+        <div class="tag">🔥 Random Debate Topic</div>
+        <h2 id="randomTopic">Should AI replace traditional schools?</h2>
+      </div>
+
+      <div class="topic-box">
+        <div class="tag">🎮 Current Game Mode</div>
+        <h3>Debate Arena</h3>
+        <p style="color: var(--muted); margin-top: 10px; line-height: 1.7;">
+          Users are split into teams and have 60 seconds each to defend their side.
+        </p>
+      </div>
+
+      <button class="btn btn-primary" style="width: 100%; margin-top: 10px;" onclick="generateTopic()">
+        Generate New Topic
+      </button>
+    </div>
+  </section>
+
+  <section class="section" id="rooms">
+    <h2 class="section-title">Trending Voice Rooms</h2>
+
+    <div class="rooms-grid">
+      <div class="glass-card room-card">
+        <div class="room-header">
+          <div class="room-title">Future of Gaming</div>
+          <div class="live-dot"></div>
+        </div>
+
+        <p class="room-desc">
+          Open discussion about cloud gaming, AI NPCs and whether VR is the future.
+        </p>
+
+        <div class="tag">Speech Mode</div>
+
+        <div class="room-footer">
+          <div class="avatars">
+            <div class="avatar">A</div>
+            <div class="avatar">J</div>
+            <div class="avatar">M</div>
+          </div>
+
+          <button class="btn btn-outline">Join</button>
+        </div>
+      </div>
+
+      <div class="glass-card room-card">
+        <div class="room-header">
+          <div class="room-title">Hot Takes Hub</div>
+          <div class="live-dot"></div>
+        </div>
+
+        <p class="room-desc">
+          Random controversial topics every 5 minutes. Quick-fire opinions only.
+        </p>
+
+        <div class="tag">Opinion Clash</div>
+
+        <div class="room-footer">
+          <div class="avatars">
+            <div class="avatar">R</div>
+            <div class="avatar">S</div>
+            <div class="avatar">T</div>
+          </div>
+
+          <button class="btn btn-outline">Join</button>
+        </div>
+      </div>
+
+      <div class="glass-card room-card">
+        <div class="room-header">
+          <div class="room-title">Politics Unfiltered</div>
+          <div class="live-dot"></div>
+        </div>
+
+        <p class="room-desc">
+          Structured debates with moderators and audience voting after each round.
+        </p>
+
+        <div class="tag">Debate Arena</div>
+
+        <div class="room-footer">
+          <div class="avatars">
+            <div class="avatar">L</div>
+            <div class="avatar">K</div>
+            <div class="avatar">D</div>
+          </div>
+
+          <button class="btn btn-outline">Join</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="features">
+    <h2 class="section-title">Features</h2>
+
+    <div class="feature-grid">
+      <div class="glass-card feature-card">
+        <div class="feature-icon">🎤</div>
+        <h3>Live Voice Chat</h3>
+        <p style="margin-top: 12px; color: var(--muted); line-height: 1.7;">
+          Join real-time voice rooms with crystal clear communication and moderation tools.
+        </p>
+      </div>
+
+      <div class="glass-card feature-card">
+        <div class="feature-icon">🎲</div>
+        <h3>Random Topics</h3>
+        <p style="margin-top: 12px; color: var(--muted); line-height: 1.7;">
+          Auto-generated topics keep conversations fresh, exciting and unpredictable.
+        </p>
+      </div>
+
+      <div class="glass-card feature-card">
+        <div class="feature-icon">🧠</div>
+        <h3>Game Modes</h3>
+        <p style="margin-top: 12px; color: var(--muted); line-height: 1.7;">
+          Debate, speeches, audience voting, opinion battles and team competitions.
+        </p>
+      </div>
+
+      <div class="glass-card feature-card">
+        <div class="feature-icon">👤</div>
+        <h3>Custom Profiles</h3>
+        <p style="margin-top: 12px; color: var(--muted); line-height: 1.7;">
+          Personalize your profile with profile pictures, bios, usernames and badges.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="profile">
+    <h2 class="section-title">Your Profile</h2>
+
+    <div style="margin-bottom: 28px; display:flex; gap:14px; flex-wrap:wrap; align-items:center;">
+      <input type="text" id="profileSearch" placeholder="Search profiles by username..." style="flex:1; min-width:240px; padding:14px 18px; border-radius:16px; border:1px solid var(--border); background:rgba(255,255,255,0.06); color:var(--text); outline:none;">
+      <button class="btn btn-primary" onclick="searchProfile()">Search Profile</button>
+    </div>
+
+    <div class="profile-panel">
+      <div class="glass-card profile-sidebar">
+        <div class="profile-image" id="profileAvatar">V</div>
+        <h3 id="profileUsername">@voiceking</h3>
+        <p id="profileBioText">
+          Public speaker • Debate host • Technology enthusiast.
+        </p>
+
+        <div style="margin-top:18px; text-align:center;">
+          <div class="tag" id="profileTitle">👑 Debate Champion</div>
+        </div>
+
+        <div style="display:flex; gap:12px; margin-top:20px; justify-content:center; flex-wrap:wrap;">
+          <button class="btn btn-primary" id="followBtn" onclick="toggleFollow()">Follow</button>
+          <button class="btn btn-outline" onclick="likeProfile()">❤️ Like Profile</button>
+        </div>
+
+        <div class="profile-stats">
+          <div class="stat">
+            <h4>142</h4>
+            <p>Rooms</p>
+          </div>
+
+          <div class="stat">
+            <h4>8.2K</h4>
+            <p>Followers</p>
+          </div>
+
+          <div class="stat">
+            <h4>91%</h4>
+            <p>Rating</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="glass-card profile-content">
+        <h3 style="margin-bottom: 22px;">Edit Profile</h3>
+
+        <div class="input-group">
+          <label>Display Name</label>
+          <input type="text" placeholder="Enter display name">
+        </div>
+
+        <div class="input-group">
+          <label>Username</label>
+          <input type="text" placeholder="@username">
+        </div>
+
+        <div class="input-group">
+          <label>Profile Bio</label>
+          <textarea rows="4" placeholder="Tell the community about yourself..."></textarea>
+        </div>
+
+        <div class="input-group">
+          <label>Profile Picture Letter</label>
+          <input type="text" id="profileAvatarInput" maxlength="1" placeholder="V">
+        </div>
+
+        <div class="input-group">
+          <label>Title</label>
+          <input type="text" id="profileTitleInput" placeholder="e.g Debate King 👑">
+        </div>
+
+        <button class="btn btn-primary" onclick="saveProfile()">Save Profile</button>
+      </div>
+    </div>
+  </section>
+
+  <div class="auth-modal" id="loginModal">
+    <div class="glass-card auth-box">
+      <h2>Login to VoxArena</h2>
+
+      <div class="input-group">
+        <label>Email</label>
+        <input type="email" id="loginEmail" placeholder="Enter your email">
+      </div>
+
+      <div class="input-group">
+        <label>Password</label>
+        <input type="password" id="loginPassword" placeholder="Enter password">
+      </div>
+
+      <button class="btn btn-primary" style="width: 100%; margin-top: 8px;" onclick="loginUser()">
+        Login
+      </button>
+
+      <button class="btn btn-outline" style="width: 100%; margin-top: 14px;" onclick="closeModals()">
+        Close
+      </button>
+    </div>
+  </div>
+
+  <div class="auth-modal" id="signupModal">
+    <div class="glass-card auth-box">
+      <h2>Create Account</h2>
+
+      <div class="input-group">
+        <label>Display Name</label>
+        <input type="text" id="signupDisplay" placeholder="Your display name">
+      </div>
+
+      <div class="input-group">
+        <label>Username</label>
+        <input type="text" id="signupUsername" placeholder="@username">
+      </div>
+
+      <div class="input-group">
+        <label>Email</label>
+        <input type="email" id="signupEmail" placeholder="Enter your email">
+      </div>
+
+      <div class="input-group">
+        <label>Password</label>
+        <input type="password" id="signupPassword" placeholder="Create password">
+      </div>
+
+      <button class="btn btn-primary" style="width: 100%; margin-top: 8px;" onclick="signupUser()">
+        Sign Up
+      </button>
+
+      <button class="btn btn-outline" style="width: 100%; margin-top: 14px;" onclick="closeModals()">
+        Close
+      </button>
+    </div>
+  </div>
+
+  <button class="floating-btn" onclick="window.scrollTo({ top: 0, behavior: 'smooth' })">
+    ↑
+  </button>
+
+  <footer class="footer">
+    <p>© 2026 VoxArena — Modern Voice Debate Platform</p>
+  </footer>
+
+  <script>
+    let currentUser = null;
+
+    const topics = [
+      'Should AI replace traditional schools?',
+      'Is social media helping or harming society?',
+      'Would humans survive on Mars?',
+      'Should gaming be considered a sport?',
+      'Can technology solve climate change?',
+      'Is remote work the future of employment?',
+      'Should influencers be treated as celebrities?',
+      'Will robots replace most jobs in 20 years?'
+    ];
+
+    function toggleTheme() {
+      document.body.classList.toggle('light');
+    }
+
+    function generateTopic() {
+      const topic = topics[Math.floor(Math.random() * topics.length)];
+      document.getElementById('randomTopic').innerText = topic;
+    }
+
+    function openLogin() {
+      document.getElementById('loginModal').style.display = 'flex';
+    }
+
+    function openSignup() {
+      document.getElementById('signupModal').style.display = 'flex';
+    }
+
+    function closeModals() {
+      document.getElementById('loginModal').style.display = 'none';
+      document.getElementById('signupModal').style.display = 'none';
+    }
+
+    function signupUser() {
+      const display = document.getElementById('signupDisplay').value;
+      const username = document.getElementById('signupUsername').value;
+      const email = document.getElementById('signupEmail').value;
+      const password = document.getElementById('signupPassword').value;
+
+      if(!display || !username || !email || !password) {
+        alert('Please fill all signup fields.');
+        return;
+      }
+
+      const users = JSON.parse(localStorage.getItem('voxarena_users')) || [];
+
+      const exists = users.find(u => u.email === email || u.username === username);
+
+      if(exists) {
+        alert('Account already exists.');
+        return;
+      }
+
+      const user = {
+        display,
+        username,
+        email,
+        password,
+        bio: 'New VoxArena member',
+        avatar: username.charAt(0).toUpperCase(),
+        title: '🎤 New Speaker',
+        followers: 0,
+        likes: 0
+      };
+
+      users.push(user);
+      localStorage.setItem('voxarena_users', JSON.stringify(users));
+
+      alert('Signup successful!');
+      closeModals();
+    }
+
+    function loginUser() {
+      const email = document.getElementById('loginEmail').value;
+      const password = document.getElementById('loginPassword').value;
+
+      const users = JSON.parse(localStorage.getItem('voxarena_users')) || [];
+
+      const found = users.find(u => u.email === email && u.password === password);
+
+      if(found) {
+        currentUser = found;
+        localStorage.setItem('voxarena_current_user', JSON.stringify(found));
+        loadCurrentUser();
+        alert('Login successful!');
+        closeModals();
+      } else {
+        alert('Invalid email or password.');
+      }
+    }
+
+    function loadCurrentUser() {
+      const saved = JSON.parse(localStorage.getItem('voxarena_current_user'));
+
+      if(saved) {
+        currentUser = saved;
+
+        document.getElementById('profileUsername').innerText = '@' + saved.username;
+        document.getElementById('profileBioText').innerText = saved.bio;
+        document.getElementById('profileAvatar').innerText = saved.avatar;
+        document.getElementById('profileTitle').innerText = saved.title;
+
+        document.querySelector('input[placeholder="Enter display name"]').value = saved.display;
+        document.querySelector('input[placeholder="@username"]').value = saved.username;
+        document.querySelector('textarea').value = saved.bio;
+        document.getElementById('profileAvatarInput').value = saved.avatar;
+        document.getElementById('profileTitleInput').value = saved.title;
+
+        updateFollowButton(saved.username);
+      }
+      }
+    }
+
+    function saveProfile() {
+      if(!currentUser) {
+        alert('Please login first.');
+        return;
+      }
+
+      const displayInput = document.querySelector('input[placeholder="Enter display name"]');
+      const usernameInput = document.querySelector('input[placeholder="@username"]');
+      const bioInput = document.querySelector('textarea');
+
+      currentUser.display = displayInput.value;
+      currentUser.username = usernameInput.value.replace('@','');
+      currentUser.bio = bioInput.value;
+      currentUser.avatar = document.getElementById('profileAvatarInput').value || currentUser.avatar;
+      currentUser.title = document.getElementById('profileTitleInput').value || currentUser.title;
+
+      let users = JSON.parse(localStorage.getItem('voxarena_users')) || [];
+
+      users = users.map(u => {
+        if(u.email === currentUser.email) {
+          return currentUser;
+        }
+        return u;
+      });
+
+      localStorage.setItem('voxarena_users', JSON.stringify(users));
+      localStorage.setItem('voxarena_current_user', JSON.stringify(currentUser));
+
+      document.getElementById('profileUsername').innerText = '@' + currentUser.username;
+      document.getElementById('profileBioText').innerText = currentUser.bio;
+      document.getElementById('profileAvatar').innerText = currentUser.avatar;
+      document.getElementById('profileTitle').innerText = currentUser.title;
+
+      alert('All profile changes saved successfully!');
+    }
+
+    function searchProfile() {
+      const query = document.getElementById('profileSearch').value.toLowerCase().replace('@','').trim();
+      const users = JSON.parse(localStorage.getItem('voxarena_users')) || [];
+
+      const found = users.find(u => u.username.toLowerCase() === query);
+
+      if(found) {
+        document.getElementById('profileUsername').innerText = '@' + found.username;
+        document.getElementById('profileBioText').innerText = found.bio;
+        document.getElementById('profileAvatar').innerText = found.avatar;
+        document.getElementById('profileTitle').innerText = found.title;
+
+        updateFollowButton(found.username);
+
+        alert('Profile found!');
+      } else {
+        alert('Profile not found.');
+      }
+    }
+
+    function toggleFollow() {
+      const btn = document.getElementById('followBtn');
+      const viewedUsername = document.getElementById('profileUsername').innerText.replace('@','');
+
+      if(!currentUser) {
+        alert('Please login first.');
+        return;
+      }
+
+      let following = JSON.parse(localStorage.getItem('voxarena_following')) || {};
+
+      if(!following[currentUser.email]) {
+        following[currentUser.email] = [];
+      }
+
+      const userFollowing = following[currentUser.email];
+
+      if(userFollowing.includes(viewedUsername)) {
+        following[currentUser.email] = userFollowing.filter(u => u !== viewedUsername);
+        btn.innerText = 'Follow';
+        btn.classList.remove('btn-outline');
+        btn.classList.add('btn-primary');
+      } else {
+        following[currentUser.email].push(viewedUsername);
+        btn.innerText = 'Unfollow';
+        btn.classList.remove('btn-primary');
+        btn.classList.add('btn-outline');
+      }
+
+      localStorage.setItem('voxarena_following', JSON.stringify(following));
+    }
+
+    function updateFollowButton(username) {
+      if(!currentUser) return;
+
+      const btn = document.getElementById('followBtn');
+      const following = JSON.parse(localStorage.getItem('voxarena_following')) || {};
+      const userFollowing = following[currentUser.email] || [];
+
+      if(userFollowing.includes(username)) {
+        btn.innerText = 'Unfollow';
+        btn.classList.remove('btn-primary');
+        btn.classList.add('btn-outline');
+      } else {
+        btn.innerText = 'Follow';
+        btn.classList.remove('btn-outline');
+        btn.classList.add('btn-primary');
+      }
+    }
+
+    function likeProfile() {
+      alert('❤️ You liked this profile!');
+    }
+
+    function closeAuth() {
+      document.getElementById('authModal').style.display = 'none';
+    }
+
+    loadCurrentUser();
+
+    window.onclick = function(event) {
+      const loginModal = document.getElementById('loginModal');
+      const signupModal = document.getElementById('signupModal');
+
+      if(event.target === loginModal || event.target === signupModal) {
+        closeModals();
+      }
+    }
+    }
+  </script>
 </body>
 </html>
